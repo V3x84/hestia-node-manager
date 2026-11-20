@@ -47,7 +47,7 @@ clear
 
 echo
 echo -e "${CYAN}=====================================================${NC}"
-echo -e "${WHITE}           HESTIA NODE MANAGER V2.0${NC}"
+echo -e "${WHITE}           HESTIA NODE MANAGER V2.0.1${NC}"
 echo -e "${YELLOW}                 Creado por V3X${NC}"
 echo -e "${CYAN}=====================================================${NC}"
 echo
