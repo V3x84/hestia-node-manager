@@ -1,0 +1,212 @@
+#!/bin/bash
+
+# ==========================================
+# COLORES
+# ==========================================
+
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+BLUE='\033[0;34m'
+MAGENTA='\033[0;35m'
+CYAN='\033[0;36m'
+WHITE='\033[1;37m'
+NC='\033[0m'
+
+# ==========================================
+# VALIDAR ROOT
+# ==========================================
+
+if [ "$EUID" -ne 0 ]; then
+
+    clear
+
+    echo
+    echo -e "${RED}#########################################${NC}"
+    echo -e "${RED}#                                       #${NC}"
+    echo -e "${RED}#      EJECUTAR COMO ROOT (sudo)        #${NC}"
+    echo -e "${RED}#                                       #${NC}"
+    echo -e "${RED}#########################################${NC}"
+    echo
+
+    echo "sudo hestia-node"
+    echo
+
+    exit 1
+
+fi
+
+# ==========================================
+# MENU PRINCIPAL
+# ==========================================
+
+while true
+do
+
+clear
+
+echo
+echo -e "${CYAN}=====================================================${NC}"
+echo -e "${WHITE}           HESTIA NODE MANAGER V2.0${NC}"
+echo -e "${YELLOW}                 Creado por V3X${NC}"
+echo -e "${CYAN}=====================================================${NC}"
+echo
+
+echo -e "${GREEN}1)${NC} Instalar Node.js"
+echo -e "${GREEN}2)${NC} Asignar Proxy NodeJS"
+echo -e "${GREEN}3)${NC} Estado de Puertos"
+echo -e "${GREEN}4)${NC} Crear Nueva Plantilla"
+echo -e "${GREEN}5)${NC} Crear Aplicación NodeJS"
+echo -e "${GREEN}6)${NC} Reiniciar Aplicación"
+echo -e "${GREEN}7)${NC} Ver Logs"
+echo -e "${GREEN}8)${NC} Configuración"
+echo -e "${GREEN}9)${NC} Dar de Baja Proyecto NodeJS"
+echo -e "${GREEN}10)${NC} Salir"
+echo
+
+read -p "Seleccione una opción: " OPT
+
+case $OPT in
+
+1)
+
+    if [ -f "/usr/local/bin/hestia-node-tools/install-node.sh" ]; then
+        bash /usr/local/bin/hestia-node-tools/install-node.sh
+    else
+        echo
+        echo "Módulo no instalado."
+    fi
+
+    echo
+    read -p "ENTER para continuar..."
+;;
+
+2)
+
+    if [ -f "/usr/local/bin/hestia-node-tools/assign-proxy.sh" ]; then
+        bash /usr/local/bin/hestia-node-tools/assign-proxy.sh
+    else
+        echo
+        echo "Módulo no instalado."
+    fi
+
+    echo
+    read -p "ENTER para continuar..."
+;;
+
+3)
+
+    if [ -f "/usr/local/bin/hestia-node-tools/ports-status.sh" ]; then
+        bash /usr/local/bin/hestia-node-tools/ports-status.sh
+    else
+        echo
+        echo "Módulo no instalado."
+    fi
+
+    echo
+    read -p "ENTER para continuar..."
+;;
+
+4)
+
+    if [ -f "/usr/local/bin/hestia-node-tools/create-template.sh" ]; then
+        bash /usr/local/bin/hestia-node-tools/create-template.sh
+    else
+        echo
+        echo "Módulo no instalado."
+    fi
+
+    echo
+    read -p "ENTER para continuar..."
+;;
+
+5)
+
+    if [ -f "/usr/local/bin/hestia-node-tools/create-app.sh" ]; then
+        bash /usr/local/bin/hestia-node-tools/create-app.sh
+    else
+        echo
+        echo "Módulo no instalado."
+    fi
+
+    echo
+    read -p "ENTER para continuar..."
+;;
+
+6)
+
+    if [ -f "/usr/local/bin/hestia-node-tools/restart-app.sh" ]; then
+        bash /usr/local/bin/hestia-node-tools/restart-app.sh
+    else
+        echo
+        echo "Módulo no instalado."
+    fi
+
+    echo
+    read -p "ENTER para continuar..."
+;;
+
+7)
+
+    if [ -f "/usr/local/bin/hestia-node-tools/logs-app.sh" ]; then
+        bash /usr/local/bin/hestia-node-tools/logs-app.sh
+    else
+        echo
+        echo "Módulo todavía no desarrollado."
+    fi
+
+    echo
+    read -p "ENTER para continuar..."
+;;
+
+8)
+
+    clear
+
+    echo
+    echo -e "${CYAN}=====================================================${NC}"
+    echo -e "${WHITE}CONFIGURACIÓN${NC}"
+    echo -e "${YELLOW}Creado por V3X${NC}"
+    echo -e "${CYAN}=====================================================${NC}"
+    echo
+
+    echo "Directorio herramientas:"
+    echo "/usr/local/bin/hestia-node-tools"
+
+    echo
+    echo "Registro:"
+    echo "/usr/local/bin/hestia-node-tools/registry.db"
+
+    echo
+
+    read -p "ENTER para continuar..."
+;;
+9)
+
+    if [ -f "/usr/local/bin/hestia-node-tools/remove-proxy.sh" ]; then
+        bash /usr/local/bin/hestia-node-tools/remove-proxy.sh
+    else
+        echo
+        echo "Módulo no instalado."
+    fi
+
+    echo
+    read -p "ENTER para continuar..."
+;;
+
+10)
+
+    clear
+    exit 0
+;;
+
+*)
+
+    echo
+    echo -e "${RED}Opción inválida${NC}"
+    sleep 2
+;;
+
+esac
+
+done

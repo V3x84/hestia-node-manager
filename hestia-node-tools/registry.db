@@ -1,0 +1,3 @@
+# Hestia Node Manager - Registro de aplicaciones
+# Formato: TSV
+# Usuario	Dominio	Puerto	Plantilla	Proceso PM2	Directorio	Archivo principal	Estado	Creado	Actualizado
